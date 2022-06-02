@@ -18,7 +18,7 @@ while intentos <= 8 and intentos >0 :
    
     numeroUsuario=int(input("Ingrese un numero: "))
     
-    if numeroUsuario > 0 and numeroUsuario > 100:
+    if numeroUsuario not in range(1,101):
         print ("Recuerde el rango permitido es de 1 - 100")
         print("\n")
     elif numeroUsuario > aleatorio:
