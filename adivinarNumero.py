@@ -39,6 +39,10 @@ while intentos <= 8 and intentos >0 :
         
         print(f"Le tomo {turnosfinal} intentos para adivinar")
         intentos=0
+        break;
+
+if numeroUsuario != aleatorio:
+    print(f"Lo siento, se han agotado los intentos. El numero secreto era {aleatorio}")
 
 
 
