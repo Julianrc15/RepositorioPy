@@ -1,10 +1,14 @@
 
 def palabras(palabra):
-    lista=list(palabra.lower())
+    unicos=set()
+    
+    for letra in palabra:
+        unicos.add(letra)
+    
+    lista=list(unicos)
     lista.sort()
-    unicos=set(lista)
 
-    return unicos
+    return lista
 
 r=palabras("entretenido")
 print (r)
