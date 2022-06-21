@@ -22,7 +22,8 @@ jugador_x_cambio=0
 img_enemigo=pygame.image.load("Proyectos_PY\JuegoSpaceX\enemigo.png")
 enemigo_x=random.randint(0,736)
 enemigo_y=random.randint(50,200)
-enemigo_x_cambio=0
+enemigo_x_cambio= 0.1
+enemigo_y_cambio= 50
 
 
 #función jugador
@@ -72,15 +73,24 @@ while se_ejecuta:
 
 
 
-    #modificar posicion
+    #modificar posicion Jugador
     jugador_x += jugador_x_cambio
     # jugador_y += jugador_yCambio
 
-    #mantener dentro de lo bordes
+    #mantener dentro de lo bordes al jugador
     if jugador_x <= 0:
         jugador_x = 0
     elif jugador_x >= 736:
         jugador_x=736
+    
+    #modificar enemigo
+    enemigo_x += enemigo_x_cambio
+   
+    #mantener dentro de lo bordes al enemigo
+    if enemigo_x <= 0:
+        enemigo_x_cambio = 0.1
+    elif enemigo_x >= 736:
+        enemigo_x_cambio= -0.1
 
 
     jugador(jugador_x,jugador_y)
