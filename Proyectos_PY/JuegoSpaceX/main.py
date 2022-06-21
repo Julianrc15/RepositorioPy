@@ -1,4 +1,5 @@
 import pygame
+import random
 
 # inicializar pygame
 pygame.init()
@@ -15,12 +16,23 @@ pygame.display.set_icon(icono)
 img_jugador=pygame.image.load("Proyectos_PY\JuegoSpaceX\spaceship1.png")
 jugador_x=368
 jugador_y=536
-jugador_xCambio=0
-# jugador_yCambio=0
+jugador_x_cambio=0
+
+#enemigo
+img_enemigo=pygame.image.load("Proyectos_PY\JuegoSpaceX\enemigo.png")
+enemigo_x=random.randint(0,736)
+enemigo_y=random.randint(50,200)
+enemigo_x_cambio=0
 
 
+#función jugador
 def jugador(x,y):
     pantalla.blit(img_jugador, (x,y))
+
+
+#función enemigo
+def enemigo(x,y):
+    pantalla.blit(img_enemigo, (x,y))
 
 
 
@@ -36,7 +48,7 @@ while se_ejecuta:
     pantalla.fill((205,144,228))
    
    
-    #evento cerrar kiegp
+    #evento cerrar
     for evento in pygame.event.get():
         if evento.type == pygame.QUIT:
             se_ejecuta = False
@@ -44,10 +56,10 @@ while se_ejecuta:
         #presionar teclas
         if evento.type == pygame.KEYDOWN:
             if evento.key == pygame.K_LEFT:
-                jugador_xCambio -= 0.3
+                jugador_x_cambio = -0.1
                 print("izq")
             if evento.key == pygame.K_RIGHT:
-                jugador_xCambio += 0.3
+                jugador_x_cambio = 0.1
                 print("der")
                        
             #soltar teclas            
@@ -61,7 +73,7 @@ while se_ejecuta:
 
 
     #modificar posicion
-    jugador_x += jugador_xCambio
+    jugador_x += jugador_x_cambio
     # jugador_y += jugador_yCambio
 
     #mantener dentro de lo bordes
@@ -72,6 +84,6 @@ while se_ejecuta:
 
 
     jugador(jugador_x,jugador_y)
-
+    enemigo(enemigo_x,  enemigo_y)
     #actualizar
     pygame.display.update()
