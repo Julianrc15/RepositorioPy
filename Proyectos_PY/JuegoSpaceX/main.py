@@ -52,9 +52,17 @@ bala_visible= False
 
 #puntaje
 puntaje=0
-fuente= pygame.font.Font('freesansbold.ttf', 32)
+fuente= pygame.font.Font('urbantribE.ttf', 32)
 texto_x= 10
 texto_y = 10
+
+#texto final del juego
+fuente_final=pygame.font.Font('urbantribE.ttf', 65)
+
+#funcion texto_final
+def texto_final():
+    mi_fuente_final= fuente_final.render("Game Over", True, (255, 255, 255))
+    pantalla.blit(mi_fuente_final,(150,150))
 
 #función mostrar puntaje
 def mostrar_puntaje(x, y):
@@ -144,7 +152,16 @@ while se_ejecuta:
         
     #modificar enemigo
     for e in range(cantidad_enemigos):
+        if enemigo_y[e] > 470:
+            for k in range (cantidad_enemigos):
+                enemigo_y[k] = 1000
+            texto_final()
+            break
+
+
+
         enemigo_x[e] += enemigo_x_cambio[e]
+         
    
     #mantener dentro de lo bordes al enemigo
         if enemigo_x[e] <= 0:
